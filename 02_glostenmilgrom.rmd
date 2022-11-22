@@ -1,0 +1,485 @@
+---
+title: Document Center
+---
+
+## Glosten and Milgrom - Sequential Trading
+
+```{r setup, include=FALSE}
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+Assume the following model of sequential trading based on the theory of Glosten and Milgrom (1985).
+The bid ask spread illustrates the cost of immediacy and consists of a transaction cost component and a component of adverse selection.
+
+Assume the parameter of $\theta$ indicating the probability of receiving \textit{good} or \textit{bad} news, equivalent to the price $V$ moving upwards $V^{high}$ or downwards $V^{low}$.
+Let $\mu$ capture the probability of an informed trader executing an order with $T^{inf}$ for \textit{informed} and $T^{uninf}$ for \textit{uninformed} traders.
+
+$$
+\begin{aligned}
+& \text{Price Evolvement}: & V \sim B(p=\theta) \\
+& \text{Trader Type}:      & T \sim B(p=\mu) \\
+\end{aligned}
+$$
+
+## Tasks
+
+### (a) What are the basic assumptions of the Glosten-Milgrom model?
+- quote driven market (bid-ask prices)
+- trade size equals unity
+- one trade per period
+- no explicit transaction costs 
+- no inventory constraints
+
+In the setting of Glosten and Milgrom, the market maker faces a problem of Adverse Selection as he loses when trading with informed traders.
+Informed traders are more likely to buy the asset in presence of good news and more likely to sell the asset in presence of bad news.
+Hence, the direction of the trade conveys information about the true value of the asset.
+The bid price therefore pictures the expected value of the asset given a trader wants to sell the asset $E(V|S)$ while the ask price pictures the expected value of the asset given a trader wants to buy the asset $E(V|B)$.
+
+\pagebreak
+\vspace*{0.5cm}
+
+## (b) Draw the probability tree with the underlying probabilities, assuming $\theta = 0.5$, $\mu = 0.5$ and $\gamma_B = \gamma_S = 0.5$.
+
+Based on the underlying distribution assumption we can extract the probabilities as
+
+$$
+\begin{aligned}
+P(V=V^{high}) & = \theta \\
+              & = 1 - P(V = V^{low}) \\
+              & = 1 - \theta \\
+              & = 0.5 \\
+P(T=T^{inf})  & = \mu \\
+              & = 1 - P(T=T^{uninf}) \\
+              & = 1 - \mu \\
+              & = 0.5 \\
+\end{aligned}
+$$
+
+With the following probabilities of an informed or uninformed trader, selling or buying assets.
+
+$$
+\begin{aligned}
+P(S|V^{low} \cap T^{inf})   & = P(B|V^{high} \cap T^{inf}) = 1 \\
+P(S|V^{low} \cap T^{uninf}) & = P(B|V^{high} \cap T^{uninf}) = \gamma_B = \gamma_S = 0.5 \\
+\end{aligned}
+$$
+
+An informed trader will sell the asset if $V=V^{low}$ and buy if $V=V^{high}$ with a probability of $1$, whereas an uninformed trader faces equal probability to buy $\gamma_B$ and sell $\gamma_S$ the asset.
+
+Resulting in the following tree
+
+\begin{tikzpicture}\tikzset{vertex/.style = {minimum size=1.5em, anchor=west}}
+\tikzset{edge/.style = {->}}
+% vertices
+\node[vertex] (0) at (0,0) {Start};
+\node[vertex] (1) at (4,2) {Good News};
+\draw[edge]   (0) to node[left, sloped,xshift=8pt,yshift=8pt]{$\theta$}(1);
+\node[vertex] (11) at (9,3) {Informed};
+\draw[edge]   (1) to node[left, sloped,xshift=8pt,yshift=8pt]{$\mu$}(11);
+\node[vertex] (111) at (13,3.5) {Buy $\theta\mu$};
+\draw[edge]   (11) to node[left, sloped,xshift=8pt,yshift=8pt]{$1$}(111);
+\node[vertex] (112) at (13,2.5) {Sell $0$};
+\draw[edge]   (11) to node[left, sloped,xshift=8pt,yshift=8pt]{$0$}(112);
+\node[vertex] (12) at (9,1) {Uninformed};
+\draw[edge]   (1) to node[left, sloped,xshift=8pt,yshift=8pt]{$1-\mu$}(12);
+\node[vertex] (121) at (13,1.5) {Buy $\theta(1-\mu)\gamma_B$};
+\draw[edge]   (12) to node[left, sloped,xshift=8pt,yshift=8pt]{$\gamma_B$}(121);
+\node[vertex] (122) at (13,0.5) {Sell $\theta(1-\mu)\gamma_S$};
+\draw[edge]   (12) to node[left, sloped,xshift=8pt,yshift=8pt]{$\gamma_S$}(122);
+\node[vertex] (2) at (4,-2) {Bad News};
+\draw[edge]   (0) to node[left, sloped,xshift=8pt,yshift=8pt]{$1-\theta$}(2);
+\node[vertex] (21) at (9,-1) {Informed};
+\draw[edge]   (2) to node[left, sloped,xshift=8pt,yshift=8pt]{$\mu$}(21);
+\node[vertex] (211) at (13,-0.5) {Buy $0$};
+\draw[edge]   (21) to node[left, sloped,xshift=8pt,yshift=8pt]{$0$}(211);
+\node[vertex] (221) at (13,-1.5) {Sell $(1-\theta)\mu$};
+\draw[edge]   (21) to node[left, sloped,xshift=8pt,yshift=8pt]{$1$}(221);
+\node[vertex] (22) at (9,-3) {Uninformed};
+\draw[edge]   (2) to node[left, sloped,xshift=8pt,yshift=8pt]{$1-\mu$}(22);
+\node[vertex] (221) at (13,-2.5) {Buy $(1-\theta)(1-\mu)\gamma_B$};
+\draw[edge]   (22) to node[left, sloped,xshift=8pt,yshift=8pt]{$\gamma_B$}(221);
+\node[vertex] (222) at (13,-3.5) {Sell $(1-\theta)(1-\mu)\gamma_S$};
+\draw[edge]   (22) to node[left, sloped,xshift=8pt,yshift=8pt]{$\gamma_S$}(222);
+\end{tikzpicture}
+
+\pagebreak
+\vspace*{0.5cm}
+
+## (c) Calculate the conditional probability of observing a sell order, given $V^{low}$ and $V^{high}$.
+
+Recall that according to the law of total probability it holds that
+
+$$
+\begin{aligned}
+& P(A|C) = \sum_i P(A|C \cap B_i) \cdot P(B_i). \\
+\end{aligned}
+$$
+
+Therefore we obtain for the single conditional probabilities
+
+$$
+\begin{aligned}
+P(S|V^{low}) & = \sum_i P(S|V^{low} \cap T_i) \cdot P(T_i) \\
+               & = P(S|V^{low} \cap T^{inf}) \cdot P(T^{inf}) + P(S|V^{low} \cap T^{uninf}) \cdot P(T^{uninf}) \\
+               & = 1 \cdot 0.5 + 0.5 \cdot 0.5 \\
+               & = 0.75 \\
+\end{aligned}
+$$
+
+and
+
+$$
+\begin{aligned}
+P(S|V^{high}) & = \sum_i P(S|V^{high} \cap T_i) \cdot P(T_i) \\
+               & = P(S|V^{high} \cap T^{inf}) \cdot P(T^{inf}) + P(S|V^{high} \cap T^{uninf}) \cdot P(T^{uninf}) \\
+               & = 0 \cdot 0.5 + 0.5 \cdot 0.5 \\
+               & = 0.25. \\
+\end{aligned}
+$$
+
+\pagebreak
+\vspace*{0.5cm}
+
+## (d) Calculate the a priori probability of observing a reduction in price, when the order is a sell order.
+
+The market maker uses the Bayes Theorem to update the underlying beliefs of $V$.
+According to the Bayes-Theorem it holds that
+
+$$
+\begin{aligned}
+P(A|B) & = \frac{P(B|A) \cdot P(A)}{ \sum_i P(B|A_i) \cdot P(A_i)}. \\
+\end{aligned}
+$$
+
+Consequently, we can apply the formula to the problem set at hand, resulting in
+
+$$
+\begin{aligned}
+P(V^{low}|S) & = \frac{P(S|V=V^{low}) \cdot P(V=V^{low})}{P(S|V=V^{low}) \cdot P(V=V^{low}) + P(S|V=V^{high}) \cdot P(V=V^{high})} \\
+               & = \frac{0.75 \cdot 0.5}{0.75 \cdot 0.5 + 0.25 \cdot 0.5} \\
+               & = 0.75 \\
+\end{aligned}
+$$
+
+The probabilities capture market maker's posterior belief that $V=V^{low}$ if a sale occurs.
+If a sell order occurs, there is a probability of $75\%$ that the asset value is now $V=V^{low}$.
+
+## (e) What are the bid and ask quotes the market maker is going to set, assuming $V^{low} = 0$ and $V^{high} = 1$?
+
+The bid and ask quotes are set according to the average probabilities of observing a conditional buy or sell. 
+
+$$
+\begin{aligned}
+& E(A|B) = \sum_i P(A_i|B) \cdot A_i \\
+\end{aligned}
+$$
+
+
+$$
+\begin{aligned}
+& \text{Ask-Price}: & E(V|B) & = V^{low} \cdot P(V^{low}|B) + V^{high} \cdot P(V^{high}|B) \\
+                  &&& = 0 \cdot 0.25 + 1 \cdot 0.75 \\
+                  &&& = 0.75 \\
+& \text{Bid-Price}:  & E(V|S) & = V^{low} \cdot P(V^{low}|S) + V^{high} \cdot P(V^{high}|S) \\
+                  &&& = 0 \cdot 0.75 + 1 \cdot 0.25 \\
+                  &&& = 0.25 \\
+\end{aligned}
+$$
+
+The initial spread will be proportional to the fraction of informed traders.
+It essentially protects the market maker from being subject to adverse selection due to trading with informed traders.
+After the first trade, the market maker updates his beliefs about the underlying value and revises the quotes by using updated posterior probabilities.
+
+\pagebreak
+\vspace*{0.5cm}
+
+## (f) Explain what the prior is in the Bayes Theorem and why it is important.
+
+The Bayes Theorem consists of four main components.
+
+$$
+\begin{aligned}
+\textcolor{green}{P(A|B)} & = \frac{\textcolor{orange}{P(B|A)} \cdot \textcolor{blue}{P(A)}}{\textcolor{pink}{P(B|A_i) \cdot P(A_i) + P(B|A_j) \cdot P(A_j)}}. \\
+\end{aligned}
+$$
+
+\textcolor{green}{Posterior}: Given the observed evidence $B$, how probable is the observation of $A$.
+If we are to observe a sell order (evidence), how likely is is that the true value of the asset accounts to $V^{low}$?
+
+\textcolor{orange}{Likelihood}: Given the observation of $A$ is true, how probable is the observation of evidence $B$.
+Under the assumption that $V^{low}$ depicts the true value of the asset, how likely is the observation of a sell order?
+
+\textcolor{blue}{Prior}: What is the probability of observing A before observing the evidence?
+How probable is it that the true value of the asset is lower than its current value?
+
+\textcolor{pink}{Marginal}: How likely is the evidence under all possible realizations of A?
+What is the likelihood of observing a sell order?
+
+After the execution of the next trade the likelihood and the marginal probability of the event are going to change based on the direction of the trade. 
+This results in an updated posterior probability.
+
+\pagebreak
+\vspace*{0.5cm}
+
+## Kyle - Strategic Trading
+
+Assume the following model of strategic trading based on the theory of Kyle (1985) in $t_0$
+$$
+\begin{aligned}
+& \text{Liquidation Value}:                && v \sim N(p_0, \Sigma_0) \\
+& \text{Net Order Flow (uninformed)}:      && u \sim N(0, \sigma_u) \\
+& \text{Net Order Flow (informed)}:        && x \\
+& \text{Aggregated Order Flow}:            && y = u + x \\
+& \text{Clearing Price}:                   && p = \lambda y + \mu \\
+\end{aligned}
+$$
+
+## Tasks
+
+## (a) Explain the fundamental assumptions and initial setting of the model.
+
+(1) \textit{Periodicity}:
+The model only comprises a single trading period in $t_0$. The trades refer to a single asset that has a random liquidation value $v$ by the end of the period.
+
+(2) \textit{Net Order Flow (informed)}:
+The informed trader is assumed to have an advanced level of private information to infer with certainty about the liquidation value $v$ of the asset by the end of the period, $t_1$.
+The trader choses to submit a market order that maximizes his expected profit which comprises the buying of $x$ quantities of the asset.
+
+(3) \textit{Net Order Flow (uninformed)}:
+The market order submission of uninformed noise traders is random and exogenous to the model. 
+As a group, the noise traders submit an order to buy $u$ shares of the asset.
+Their incentive to trade is based on idiosyncratic reasons and therefore independent in sign and amplitude of $x$.
+
+(4) \textit{Aggregated Order Flow}:
+The market maker receives information about the aggregated quantity traded as $y$. 
+However, he cannot distinguish between the quantity submitted by informed and uninformed traders.
+The market maker does not face inventory constraints limiting his position and sets the price $p$ in such a way that he breaks even on average.
+
+## (b) How does the model relate to the concept of Adverse Selection?
+
+Adverse Selection assumes informational differences amongst the subjects interacting within the model.
+The informed trader holds information the market maker does not have and therefore might engage in opportunistic behavior by maximizing self-utility, while the market maker is not able to differentiate between the actual signal $v$ and noise, given the setting of anonymized trades.
+The model of strategic trading by Kyle illustrates how price impact can arise if market makers anticipate Adverse Selection in an auction setting.
+
+\pagebreak
+\vspace*{0.5cm}
+
+## (c) Explain the strategy of the informed trader based on the model.
+
+The aim of the informed trader is to maximize his expected profit, given the clearing price $p$ that the market maker is going to choose.
+The expected profit is determined as 
+$$
+\begin{aligned}
+\pi & = (v-p)x. \\
+\end{aligned}
+$$
+
+The informed trader conjectures that the market maker will use a price adjustment rule that is linear in aggregate order flow, which accounts to
+$$
+p = \mu + \lambda y.
+$$
+
+If the market maker uses a linear pricing rule to determine the prices, the informed trader should also use a linear trading rule.
+The informed trader's profits are determined by
+
+$$
+\begin{aligned}
+\pi & = (v - p)x \\
+    & = [v - (\lambda y + \mu)]x \\
+    & = [v - (\lambda (u + v) + \mu)]x \\
+\end{aligned}
+$$
+
+with an expected profit of
+
+$$
+\begin{aligned}
+E(\pi)   & = [v - \lambda x - \mu] x \\
+         & = -\lambda x^2 + [v - \mu]x, \\
+\end{aligned}
+$$
+
+given $E(u) = 0$, $E(v)=p_0$, $E(x)=x$, $E(u^2)= \sigma_u^2$ and $E(uv)=0$.
+
+In order to maximize his profits, the informed trader will set the quantity $x$ he trades based on the first order condition
+
+$$
+\begin{aligned}
+\frac{\partial E(\pi)}{\partial x} & = -2 \lambda x + (v-p) \stackrel{!}{=} 0 \\
+                                 x & = \frac{v - \mu}{2\lambda} \\
+                                   & = \frac{1}{2\lambda} \cdot v - \frac{\mu}{2\lambda} \\
+                                   & = \beta v + a \\
+                                   & = a + \beta v.
+\end{aligned}
+$$
+
+The following sections will derive the value of $\mu$ and $\lambda$.
+
+\pagebreak
+\vspace*{0.5cm}
+
+## (d) Explain the strategy of the market maker's price setting.
+
+The market maker assumes the informed trader will use an order flow generation strategy being linear to the signal
+$$
+x = a + \beta v
+$$ 
+with $v$ indicating the signal.
+
+Given the assumption that $u$ is a Gaussian random variable, the market maker can infer that a greater aggregated order flow $y$ increases the change of $x$ being large because the insider knows that $v > p_0$.
+Accordingly, the market maker will set $p$ higher than otherwise.
+Analogously, if $y$ is low, $x$ will likely be lower as well because the insider knows about $v < p_0$ and therefore submits a sell instead of a buy order.
+In this case, the market maker sets $p$ lower than otherwise.
+
+The assumptions allow for equality between
+$$
+a + v \beta \stackrel{!}{=} \frac{v - \mu}{2 \lambda}.
+$$
+
+The market maker will now need to chose the market price based on $p = E(v|y)$.
+
+The price is set according to the following projection theorem of two Gaussian random variables
+$$
+E(y|x) = E(y) + \frac{cov(x,y)\cdot[x-E(x)]}{var(x)}
+$$
+Applying the lemma to the underlying problem yields
+
+$$
+\begin{aligned}
+p & = E(v|y) \\
+  & = E(v) + \frac{cov(v,y)\cdot[y-E(y)]}{var(y)} \\
+  & = p_0 + \frac{cov(v,u+x)\cdot[y-E(u+x)]}{var(u+x)} \\
+  & = p_0 + \frac{cov(v,u+(a+v\beta))\cdot[y-E(u+(a+v\beta))]}{var(u+(a+v\beta))} \\
+  & = p_0 + \frac{ \beta \Sigma_0 \cdot[y-a - p_0\beta))]}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+  & = \frac{ \beta \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0}y + p_0 \cdot \frac{\sigma_u^2 + \beta^2 \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0} + \frac{ \beta \Sigma_0 \cdot (-a - p_0 \beta)}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+  & = \frac{ \beta \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0}y + \frac{ -a \beta \Sigma_0 + p_0 \sigma_u^2}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+  & = \lambda y + \mu,\\
+\end{aligned}
+$$
+
+\pagebreak
+\vspace*{0.5cm}
+
+with
+$$
+\begin{aligned}
+cov(v,u+(a+v\beta)) & = E[(v - E(v)) \cdot (u+a+v\beta - E(u+a+v\beta))]\\
+                    & = E[(v - p_0) \cdot (u + v \beta - p_0 \beta)] \\
+                    & = E[vu + v \beta(v - p_0) - p_0u - p_0 \beta(v - p_0)] \\
+                    & = \Sigma_0 \beta - p_0^2 \beta + p_0^2 \beta \\
+                    & = \Sigma_0 \beta.
+\end{aligned}
+$$
+
+Therefore, it follows that
+$$
+\begin{aligned}
+\lambda & = \frac{ \beta \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+\mu     & = \frac{ -a \beta \Sigma_0 + p_0 \sigma_u^2}{ \sigma_u^2 + \beta^2 \Sigma_0}. \\
+\end{aligned}
+$$
+<!-- here: -->
+<!-- http://home.cerge-ei.cz/petrz/fm/f400n30.pdf -->
+Simplifying the preceding results by substitution with $a = - \frac{\mu}{2 \lambda}$ and $\beta = \frac{1}{2\lambda}$ yields
+
+$$
+\begin{aligned}
+a       & = - p_0 \frac{\sqrt{\sigma_u^2}}{ \sqrt{\Sigma_0}} \\
+\mu     & = p_0 \\
+\lambda & = \frac{\sqrt{\Sigma_0}}{2 \sqrt{\sigma_u^2}} \\
+\beta   & = \frac{\sqrt{\sigma_u^2}}{\sqrt{\Sigma_0}}.
+\end{aligned}
+$$
+
+Thus, we obtain we equilibrium quantity of $x$ and price $p$ as
+$$
+\begin{aligned}
+x & = a + \beta v = \frac{\sqrt{\sigma_u^2}}{\sqrt{\Sigma_0}} (v-p_0) \\
+p & = \lambda y + \mu = \frac{\sqrt{\Sigma_0}}{2\sqrt{\sigma_u^2}} y + p_0. \\
+\end{aligned}
+$$
+
+## (e) What do the equilibrium equations imply?
+
+The equilibrium establishes a pricing rule chosen by the market maker and a trading strategy by the insider in a way that maximizes the insider's expected profit, given the market maker's pricing rule.
+The price is set by the market maker to earn zero expected profit, given the trading strategy of the informed trader.
+
+Given the equilibrium order $x$ of the informed trader, the ordered quantity will
+
+- increase (decrease) linear to the difference between liquidation value $v$ and price $p_0$,
+- increase (decrease) if the volatility of the order flow $\sigma_u^2$ is large (small),
+- decrease (increase) if the volatility of the order flow $\sigma_u^2$ is large (small).
+
+\pagebreak
+\vspace*{0.5cm}
+
+Given a clearing price of $p$ the price will
+
+- increase (decrease) linear to the aggregated order flow $y$,
+- increase (decrease) if the volatility of the liquidation value $\Sigma_0$ is large (small),
+- decrease (increase) if the volatility of the order flow $\sigma_u^2$ is large (small). 
+
+
+Some substitution allows to rewrite the equilibrium price as
+$$
+\begin{aligned}
+p & = p_0 + \frac{1}{2} \frac{\sqrt{\Sigma_0}}{\sqrt{\sigma_u^2}} (x + u) \\
+  & = \frac{1}{2} (\frac{\sqrt{\Sigma_0}}{\sqrt{\sigma_u^2}} u + p_0 + v),
+\end{aligned}
+$$
+
+indicating that only half of the informed trader's information $\frac{1}{2} v$ is reflected within the equilibrium price.
+The equilibrium price is therefore \textbf{not} fully revealing.
+A fully revealing price would be $p=v$.
+
+## (f) How can lambda be interpreted as a measure of liquidity?
+
+The parameter $\lambda$ can be expressed in a range of forms.
+
+$$
+\begin{aligned}
+\lambda & = \frac{1}{2} \frac{v-p_0}{x} \\
+\lambda & = \frac{p - p_0}{y} \\
+\lambda & = \frac{\sqrt{\Sigma_0}}{2 \sqrt{\sigma_u^2}} \\
+\end{aligned}
+$$
+
+The technical notation illustrates a ratio between some form of return,e.g. $p - p_0$, divided by some form of trade volume $x$ or $y$, the order flow.
+For liquid stocks the lambda will be small since for a given level of trading volume changes in price are comparatively small.
+
+Alternatively, the higher the proportion of the noise traders $\sigma_u^2$, relative to the insider information $\Sigma_0$, the more liquid the market.
+Lambda can also be interpreted as the amount the market maker raises the price when the aggregated order flow increases by one unit.
+
+
+## (g) Calculate the price volatility of the model.
+
+<!-- https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/f4ad548fb74f4bc3a2cb41654f1fc059/thumb_1200_1697.png -->
+$$
+\begin{aligned}
+Var(p) & = Var(\mu + \lambda y) \\
+       & = Var(\mu) + \lambda^2 Var(y) \\
+       & = \lambda^2 [Var(x) + Var(u)]\\
+       & = \lambda^2 [Var(x) + \sigma_u^2]\\
+       & = \lambda^2 [Var(a + v \beta) + \sigma_u^2] \\
+       & = \lambda^2 [\beta^2 \sigma_v^2 + \sigma_u^2] 
+\end{aligned}
+$$
+
+
+
+
+<!-- https://crm.sns.it/media/course/3662/lillo.pdf -->
+<!-- https://www.coursehero.com/tutors-problems/Finance/21046775-Please-help-with-part-b-Rest-of-the-parts-I-have-completed/ -->
+<!-- https://web3.econ.ku.dk/polit/studerende/eksamen/opgrv/filer/rv%20FM%20juni%2016.pdf -->
+<!-- http://assets.press.princeton.edu/links/ch9_vives_slides.pdf -->
+<!-- file:///C:/Users/lisak/Downloads/SSRN-id2652932.pdf -->
+<!-- http://home.cerge-ei.cz/petrz/fm/f400n30.pdf -->
+<!-- https://www.math.cmu.edu/CCF/CCFevents/summer17/abstracts/Notes_June_2017.pdf -->
+<!-- https://www.math.cmu.edu/ccf/CCFevents/summer17/abstracts/Back_Slides.pdf -->
+<!-- https://web3.econ.ku.dk/polit/studerende/eksamen/opgrv/filer/rv%20FM%20juni%2016.pdf -->
+<!-- http://assets.press.princeton.edu/links/ch9_vives_slides.pdf -->
+<!-- https://crm.sns.it/media/course/3662/lillo.pdf -->
+<!-- https://www.cambridge.org/sa/files/2413/6690/0777/8763_dejongrindislidesChapter2345.pdf -->
+<!-- https://www-cambridge-org.emedien.ub.uni-muenchen.de/core/services/aop-cambridge-core/content/view/CA796DF3225BCD72B32E8A7EE976B164/9781316659335c15_p290-297_CBO.pdf/kyle_model.pdf -->
+<!-- https://www-cambridge-org.emedien.ub.uni-muenchen.de/core/books/trades-quotes-and-prices/029A71078EE4C41C0D5D4574211AB1B5 -->
