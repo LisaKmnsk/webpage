@@ -4,11 +4,6 @@ title: Document Center
 
 ## Glosten and Milgrom - Sequential Trading
 
-```{r setup, include=FALSE}
-## Global options
-knitr::opts_chunk$set(cache = TRUE)
-```
-
 Assume the following model of sequential trading based on the theory of Glosten and Milgrom (1985).
 The bid ask spread illustrates the cost of immediacy and consists of a transaction cost component and a component of adverse selection.
 

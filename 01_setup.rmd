@@ -9,12 +9,6 @@ title: Document Center
 Ryan Riordan
 
 and Teaching Assistants
-```{r setup, include=TRUE}
-## Global options
-knitr::opts_chunk$set(cache = TRUE)
-
-print("Hello World!")
-```
 
 ## Setting up Markdown
 

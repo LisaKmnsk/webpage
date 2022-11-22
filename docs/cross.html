@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Cross-references | Document Center</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Cross-references | Document Center" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Cross-references | Document Center" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="John Doe" />
+
+
+<meta name="date" content="2022-11-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="first-steps.html"/>
+<link rel="next" href="parts.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>2</b> First Steps</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="first-steps.html"><a href="first-steps.html#installing-r"><i class="fa fa-check"></i><b>2.1</b> Installing R</a></li>
+<li class="chapter" data-level="2.2" data-path="first-steps.html"><a href="first-steps.html#setting-up-markdown"><i class="fa fa-check"></i><b>2.2</b> Setting up Markdown</a></li>
+<li class="chapter" data-level="2.3" data-path="first-steps.html"><a href="first-steps.html#styling"><i class="fa fa-check"></i><b>2.3</b> Styling</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>3</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="3.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="3.3" data-path="cross.html"><a href="cross.html#glosten-and-milgrom---sequential-trading"><i class="fa fa-check"></i><b>3.3</b> Glosten and Milgrom - Sequential Trading</a></li>
+<li class="chapter" data-level="3.4" data-path="cross.html"><a href="cross.html#tasks"><i class="fa fa-check"></i><b>3.4</b> Tasks</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cross.html"><a href="cross.html#a-what-are-the-basic-assumptions-of-the-glosten-milgrom-model"><i class="fa fa-check"></i><b>3.4.1</b> (a) What are the basic assumptions of the Glosten-Milgrom model?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="cross.html"><a href="cross.html#b-draw-the-probability-tree-with-the-underlying-probabilities-assuming-theta-0.5-mu-0.5-and-gamma_b-gamma_s-0.5."><i class="fa fa-check"></i><b>3.5</b> (b) Draw the probability tree with the underlying probabilities, assuming <span class="math inline">\(\theta = 0.5\)</span>, <span class="math inline">\(\mu = 0.5\)</span> and <span class="math inline">\(\gamma_B = \gamma_S = 0.5\)</span>.</a></li>
+<li class="chapter" data-level="3.6" data-path="cross.html"><a href="cross.html#c-calculate-the-conditional-probability-of-observing-a-sell-order-given-vlow-and-vhigh."><i class="fa fa-check"></i><b>3.6</b> (c) Calculate the conditional probability of observing a sell order, given <span class="math inline">\(V^{low}\)</span> and <span class="math inline">\(V^{high}\)</span>.</a></li>
+<li class="chapter" data-level="3.7" data-path="cross.html"><a href="cross.html#d-calculate-the-a-priori-probability-of-observing-a-reduction-in-price-when-the-order-is-a-sell-order."><i class="fa fa-check"></i><b>3.7</b> (d) Calculate the a priori probability of observing a reduction in price, when the order is a sell order.</a></li>
+<li class="chapter" data-level="3.8" data-path="cross.html"><a href="cross.html#e-what-are-the-bid-and-ask-quotes-the-market-maker-is-going-to-set-assuming-vlow-0-and-vhigh-1"><i class="fa fa-check"></i><b>3.8</b> (e) What are the bid and ask quotes the market maker is going to set, assuming <span class="math inline">\(V^{low} = 0\)</span> and <span class="math inline">\(V^{high} = 1\)</span>?</a></li>
+<li class="chapter" data-level="3.9" data-path="cross.html"><a href="cross.html#f-explain-what-the-prior-is-in-the-bayes-theorem-and-why-it-is-important."><i class="fa fa-check"></i><b>3.9</b> (f) Explain what the prior is in the Bayes Theorem and why it is important.</a></li>
+<li class="chapter" data-level="3.10" data-path="cross.html"><a href="cross.html#kyle---strategic-trading"><i class="fa fa-check"></i><b>3.10</b> Kyle - Strategic Trading</a></li>
+<li class="chapter" data-level="3.11" data-path="cross.html"><a href="cross.html#tasks-1"><i class="fa fa-check"></i><b>3.11</b> Tasks</a></li>
+<li class="chapter" data-level="3.12" data-path="cross.html"><a href="cross.html#a-explain-the-fundamental-assumptions-and-initial-setting-of-the-model."><i class="fa fa-check"></i><b>3.12</b> (a) Explain the fundamental assumptions and initial setting of the model.</a></li>
+<li class="chapter" data-level="3.13" data-path="cross.html"><a href="cross.html#b-how-does-the-model-relate-to-the-concept-of-adverse-selection"><i class="fa fa-check"></i><b>3.13</b> (b) How does the model relate to the concept of Adverse Selection?</a></li>
+<li class="chapter" data-level="3.14" data-path="cross.html"><a href="cross.html#c-explain-the-strategy-of-the-informed-trader-based-on-the-model."><i class="fa fa-check"></i><b>3.14</b> (c) Explain the strategy of the informed trader based on the model.</a></li>
+<li class="chapter" data-level="3.15" data-path="cross.html"><a href="cross.html#d-explain-the-strategy-of-the-market-makers-price-setting."><i class="fa fa-check"></i><b>3.15</b> (d) Explain the strategy of the market maker’s price setting.</a></li>
+<li class="chapter" data-level="3.16" data-path="cross.html"><a href="cross.html#e-what-do-the-equilibrium-equations-imply"><i class="fa fa-check"></i><b>3.16</b> (e) What do the equilibrium equations imply?</a></li>
+<li class="chapter" data-level="3.17" data-path="cross.html"><a href="cross.html#f-how-can-lambda-be-interpreted-as-a-measure-of-liquidity"><i class="fa fa-check"></i><b>3.17</b> (f) How can lambda be interpreted as a measure of liquidity?</a></li>
+<li class="chapter" data-level="3.18" data-path="cross.html"><a href="cross.html#g-calculate-the-price-volatility-of-the-model."><i class="fa fa-check"></i><b>3.18</b> (g) Calculate the price volatility of the model.</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>4</b> Parts</a></li>
+<li class="chapter" data-level="5" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>5</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>5.1</b> Footnotes</a></li>
+<li class="chapter" data-level="5.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>5.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>6</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Document Center</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cross" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Cross-references<a href="cross.html#cross" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Cross-references make it easier for your readers to find and link to elements in your book.</p>
+<div id="chapters-and-sub-chapters" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Chapters and sub-chapters<a href="cross.html#chapters-and-sub-chapters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are two steps to cross-reference any heading:</p>
+<ol style="list-style-type: decimal">
+<li>Label the heading: <code># Hello world {#nice-label}</code>.
+<ul>
+<li>Leave the label off if you like the automated heading generated based on your heading title: for example, <code># Hello world</code> = <code># Hello world {#hello-world}</code>.</li>
+<li>To label an un-numbered heading, use: <code># Hello world {-#nice-label}</code> or <code>{# Hello world .unnumbered}</code>.</li>
+</ul></li>
+<li>Next, reference the labeled heading anywhere in the text using <code>\@ref(nice-label)</code>; for example, please see Chapter <a href="cross.html#cross">3</a>.
+<ul>
+<li>If you prefer text as the link instead of a numbered reference use: <a href="cross.html#cross">any text you want can go here</a>.</li>
+</ul></li>
+</ol>
+</div>
+<div id="captioned-figures-and-tables" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Captioned figures and tables<a href="cross.html#captioned-figures-and-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figures and tables <em>with captions</em> can also be cross-referenced from elsewhere in your book using <code>\@ref(fig:chunk-label)</code> and <code>\@ref(tab:chunk-label)</code>, respectively.</p>
+<p>See Figure <a href="cross.html#fig:nice-fig">3.1</a>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cross.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb3-2"><a href="cross.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig"></span>
+<img src="_main_files/figure-html/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
+<p class="caption">
+Figure 3.1: Here is a nice figure!
+</p>
+</div>
+<p>Don’t miss Table <a href="cross.html#tab:nice-tab">3.1</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="cross.html#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb4-2"><a href="cross.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb4-3"><a href="cross.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb4-4"><a href="cross.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nice-tab">Table 3.1: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">temperature</th>
+<th align="right">pressure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">0.0002</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">0.0012</td>
+</tr>
+<tr class="odd">
+<td align="right">40</td>
+<td align="right">0.0060</td>
+</tr>
+<tr class="even">
+<td align="right">60</td>
+<td align="right">0.0300</td>
+</tr>
+<tr class="odd">
+<td align="right">80</td>
+<td align="right">0.0900</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="right">0.2700</td>
+</tr>
+<tr class="odd">
+<td align="right">120</td>
+<td align="right">0.7500</td>
+</tr>
+<tr class="even">
+<td align="right">140</td>
+<td align="right">1.8500</td>
+</tr>
+<tr class="odd">
+<td align="right">160</td>
+<td align="right">4.2000</td>
+</tr>
+<tr class="even">
+<td align="right">180</td>
+<td align="right">8.8000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div id="glosten-and-milgrom---sequential-trading" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Glosten and Milgrom - Sequential Trading<a href="cross.html#glosten-and-milgrom---sequential-trading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Assume the following model of sequential trading based on the theory of Glosten and Milgrom (1985).
+The bid ask spread illustrates the cost of immediacy and consists of a transaction cost component and a component of adverse selection.</p>
+<p>Assume the parameter of <span class="math inline">\(\theta\)</span> indicating the probability of receiving or news, equivalent to the price <span class="math inline">\(V\)</span> moving upwards <span class="math inline">\(V^{high}\)</span> or downwards <span class="math inline">\(V^{low}\)</span>.
+Let <span class="math inline">\(\mu\)</span> capture the probability of an informed trader executing an order with <span class="math inline">\(T^{inf}\)</span> for and <span class="math inline">\(T^{uninf}\)</span> for traders.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \text{Price Evolvement}: &amp; V \sim B(p=\theta) \\
+&amp; \text{Trader Type}:      &amp; T \sim B(p=\mu) \\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="tasks" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Tasks<a href="cross.html#tasks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-what-are-the-basic-assumptions-of-the-glosten-milgrom-model" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> (a) What are the basic assumptions of the Glosten-Milgrom model?<a href="cross.html#a-what-are-the-basic-assumptions-of-the-glosten-milgrom-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>quote driven market (bid-ask prices)</li>
+<li>trade size equals unity</li>
+<li>one trade per period</li>
+<li>no explicit transaction costs</li>
+<li>no inventory constraints</li>
+</ul>
+<p>In the setting of Glosten and Milgrom, the market maker faces a problem of Adverse Selection as he loses when trading with informed traders.
+Informed traders are more likely to buy the asset in presence of good news and more likely to sell the asset in presence of bad news.
+Hence, the direction of the trade conveys information about the true value of the asset.
+The bid price therefore pictures the expected value of the asset given a trader wants to sell the asset <span class="math inline">\(E(V|S)\)</span> while the ask price pictures the expected value of the asset given a trader wants to buy the asset <span class="math inline">\(E(V|B)\)</span>.</p>
+</div>
+</div>
+<div id="b-draw-the-probability-tree-with-the-underlying-probabilities-assuming-theta-0.5-mu-0.5-and-gamma_b-gamma_s-0.5." class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> (b) Draw the probability tree with the underlying probabilities, assuming <span class="math inline">\(\theta = 0.5\)</span>, <span class="math inline">\(\mu = 0.5\)</span> and <span class="math inline">\(\gamma_B = \gamma_S = 0.5\)</span>.<a href="cross.html#b-draw-the-probability-tree-with-the-underlying-probabilities-assuming-theta-0.5-mu-0.5-and-gamma_b-gamma_s-0.5." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Based on the underlying distribution assumption we can extract the probabilities as</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(V=V^{high}) &amp; = \theta \\
+              &amp; = 1 - P(V = V^{low}) \\
+              &amp; = 1 - \theta \\
+              &amp; = 0.5 \\
+P(T=T^{inf})  &amp; = \mu \\
+              &amp; = 1 - P(T=T^{uninf}) \\
+              &amp; = 1 - \mu \\
+              &amp; = 0.5 \\
+\end{aligned}
+\]</span></p>
+<p>With the following probabilities of an informed or uninformed trader, selling or buying assets.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(S|V^{low} \cap T^{inf})   &amp; = P(B|V^{high} \cap T^{inf}) = 1 \\
+P(S|V^{low} \cap T^{uninf}) &amp; = P(B|V^{high} \cap T^{uninf}) = \gamma_B = \gamma_S = 0.5 \\
+\end{aligned}
+\]</span></p>
+<p>An informed trader will sell the asset if <span class="math inline">\(V=V^{low}\)</span> and buy if <span class="math inline">\(V=V^{high}\)</span> with a probability of <span class="math inline">\(1\)</span>, whereas an uninformed trader faces equal probability to buy <span class="math inline">\(\gamma_B\)</span> and sell <span class="math inline">\(\gamma_S\)</span> the asset.</p>
+<p>Resulting in the following tree</p>
+</div>
+<div id="c-calculate-the-conditional-probability-of-observing-a-sell-order-given-vlow-and-vhigh." class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> (c) Calculate the conditional probability of observing a sell order, given <span class="math inline">\(V^{low}\)</span> and <span class="math inline">\(V^{high}\)</span>.<a href="cross.html#c-calculate-the-conditional-probability-of-observing-a-sell-order-given-vlow-and-vhigh." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recall that according to the law of total probability it holds that</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; P(A|C) = \sum_i P(A|C \cap B_i) \cdot P(B_i). \\
+\end{aligned}
+\]</span></p>
+<p>Therefore we obtain for the single conditional probabilities</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(S|V^{low}) &amp; = \sum_i P(S|V^{low} \cap T_i) \cdot P(T_i) \\
+               &amp; = P(S|V^{low} \cap T^{inf}) \cdot P(T^{inf}) + P(S|V^{low} \cap T^{uninf}) \cdot P(T^{uninf}) \\
+               &amp; = 1 \cdot 0.5 + 0.5 \cdot 0.5 \\
+               &amp; = 0.75 \\
+\end{aligned}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(S|V^{high}) &amp; = \sum_i P(S|V^{high} \cap T_i) \cdot P(T_i) \\
+               &amp; = P(S|V^{high} \cap T^{inf}) \cdot P(T^{inf}) + P(S|V^{high} \cap T^{uninf}) \cdot P(T^{uninf}) \\
+               &amp; = 0 \cdot 0.5 + 0.5 \cdot 0.5 \\
+               &amp; = 0.25. \\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="d-calculate-the-a-priori-probability-of-observing-a-reduction-in-price-when-the-order-is-a-sell-order." class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> (d) Calculate the a priori probability of observing a reduction in price, when the order is a sell order.<a href="cross.html#d-calculate-the-a-priori-probability-of-observing-a-reduction-in-price-when-the-order-is-a-sell-order." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The market maker uses the Bayes Theorem to update the underlying beliefs of <span class="math inline">\(V\)</span>.
+According to the Bayes-Theorem it holds that</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(A|B) &amp; = \frac{P(B|A) \cdot P(A)}{ \sum_i P(B|A_i) \cdot P(A_i)}. \\
+\end{aligned}
+\]</span></p>
+<p>Consequently, we can apply the formula to the problem set at hand, resulting in</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(V^{low}|S) &amp; = \frac{P(S|V=V^{low}) \cdot P(V=V^{low})}{P(S|V=V^{low}) \cdot P(V=V^{low}) + P(S|V=V^{high}) \cdot P(V=V^{high})} \\
+               &amp; = \frac{0.75 \cdot 0.5}{0.75 \cdot 0.5 + 0.25 \cdot 0.5} \\
+               &amp; = 0.75 \\
+\end{aligned}
+\]</span></p>
+<p>The probabilities capture market maker’s posterior belief that <span class="math inline">\(V=V^{low}\)</span> if a sale occurs.
+If a sell order occurs, there is a probability of <span class="math inline">\(75\%\)</span> that the asset value is now <span class="math inline">\(V=V^{low}\)</span>.</p>
+</div>
+<div id="e-what-are-the-bid-and-ask-quotes-the-market-maker-is-going-to-set-assuming-vlow-0-and-vhigh-1" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> (e) What are the bid and ask quotes the market maker is going to set, assuming <span class="math inline">\(V^{low} = 0\)</span> and <span class="math inline">\(V^{high} = 1\)</span>?<a href="cross.html#e-what-are-the-bid-and-ask-quotes-the-market-maker-is-going-to-set-assuming-vlow-0-and-vhigh-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The bid and ask quotes are set according to the average probabilities of observing a conditional buy or sell.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; E(A|B) = \sum_i P(A_i|B) \cdot A_i \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \text{Ask-Price}: &amp; E(V|B) &amp; = V^{low} \cdot P(V^{low}|B) + V^{high} \cdot P(V^{high}|B) \\
+                  &amp;&amp;&amp; = 0 \cdot 0.25 + 1 \cdot 0.75 \\
+                  &amp;&amp;&amp; = 0.75 \\
+&amp; \text{Bid-Price}:  &amp; E(V|S) &amp; = V^{low} \cdot P(V^{low}|S) + V^{high} \cdot P(V^{high}|S) \\
+                  &amp;&amp;&amp; = 0 \cdot 0.75 + 1 \cdot 0.25 \\
+                  &amp;&amp;&amp; = 0.25 \\
+\end{aligned}
+\]</span></p>
+<p>The initial spread will be proportional to the fraction of informed traders.
+It essentially protects the market maker from being subject to adverse selection due to trading with informed traders.
+After the first trade, the market maker updates his beliefs about the underlying value and revises the quotes by using updated posterior probabilities.</p>
+</div>
+<div id="f-explain-what-the-prior-is-in-the-bayes-theorem-and-why-it-is-important." class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> (f) Explain what the prior is in the Bayes Theorem and why it is important.<a href="cross.html#f-explain-what-the-prior-is-in-the-bayes-theorem-and-why-it-is-important." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Bayes Theorem consists of four main components.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\textcolor{green}{P(A|B)} &amp; = \frac{\textcolor{orange}{P(B|A)} \cdot \textcolor{blue}{P(A)}}{\textcolor{pink}{P(B|A_i) \cdot P(A_i) + P(B|A_j) \cdot P(A_j)}}. \\
+\end{aligned}
+\]</span></p>
+<p>: Given the observed evidence <span class="math inline">\(B\)</span>, how probable is the observation of <span class="math inline">\(A\)</span>.
+If we are to observe a sell order (evidence), how likely is is that the true value of the asset accounts to <span class="math inline">\(V^{low}\)</span>?</p>
+<p>: Given the observation of <span class="math inline">\(A\)</span> is true, how probable is the observation of evidence <span class="math inline">\(B\)</span>.
+Under the assumption that <span class="math inline">\(V^{low}\)</span> depicts the true value of the asset, how likely is the observation of a sell order?</p>
+<p>: What is the probability of observing A before observing the evidence?
+How probable is it that the true value of the asset is lower than its current value?</p>
+<p>: How likely is the evidence under all possible realizations of A?
+What is the likelihood of observing a sell order?</p>
+<p>After the execution of the next trade the likelihood and the marginal probability of the event are going to change based on the direction of the trade.
+This results in an updated posterior probability.</p>
+</div>
+<div id="kyle---strategic-trading" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Kyle - Strategic Trading<a href="cross.html#kyle---strategic-trading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Assume the following model of strategic trading based on the theory of Kyle (1985) in <span class="math inline">\(t_0\)</span>
+<span class="math display">\[
+\begin{aligned}
+&amp; \text{Liquidation Value}:                &amp;&amp; v \sim N(p_0, \Sigma_0) \\
+&amp; \text{Net Order Flow (uninformed)}:      &amp;&amp; u \sim N(0, \sigma_u) \\
+&amp; \text{Net Order Flow (informed)}:        &amp;&amp; x \\
+&amp; \text{Aggregated Order Flow}:            &amp;&amp; y = u + x \\
+&amp; \text{Clearing Price}:                   &amp;&amp; p = \lambda y + \mu \\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="tasks-1" class="section level2 hasAnchor" number="3.11">
+<h2><span class="header-section-number">3.11</span> Tasks<a href="cross.html#tasks-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="a-explain-the-fundamental-assumptions-and-initial-setting-of-the-model." class="section level2 hasAnchor" number="3.12">
+<h2><span class="header-section-number">3.12</span> (a) Explain the fundamental assumptions and initial setting of the model.<a href="cross.html#a-explain-the-fundamental-assumptions-and-initial-setting-of-the-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>:
+The model only comprises a single trading period in <span class="math inline">\(t_0\)</span>. The trades refer to a single asset that has a random liquidation value <span class="math inline">\(v\)</span> by the end of the period.</p></li>
+<li><p>:
+The informed trader is assumed to have an advanced level of private information to infer with certainty about the liquidation value <span class="math inline">\(v\)</span> of the asset by the end of the period, <span class="math inline">\(t_1\)</span>.
+The trader choses to submit a market order that maximizes his expected profit which comprises the buying of <span class="math inline">\(x\)</span> quantities of the asset.</p></li>
+<li><p>:
+The market order submission of uninformed noise traders is random and exogenous to the model.
+As a group, the noise traders submit an order to buy <span class="math inline">\(u\)</span> shares of the asset.
+Their incentive to trade is based on idiosyncratic reasons and therefore independent in sign and amplitude of <span class="math inline">\(x\)</span>.</p></li>
+<li><p>:
+The market maker receives information about the aggregated quantity traded as <span class="math inline">\(y\)</span>.
+However, he cannot distinguish between the quantity submitted by informed and uninformed traders.
+The market maker does not face inventory constraints limiting his position and sets the price <span class="math inline">\(p\)</span> in such a way that he breaks even on average.</p></li>
+</ol>
+</div>
+<div id="b-how-does-the-model-relate-to-the-concept-of-adverse-selection" class="section level2 hasAnchor" number="3.13">
+<h2><span class="header-section-number">3.13</span> (b) How does the model relate to the concept of Adverse Selection?<a href="cross.html#b-how-does-the-model-relate-to-the-concept-of-adverse-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Adverse Selection assumes informational differences amongst the subjects interacting within the model.
+The informed trader holds information the market maker does not have and therefore might engage in opportunistic behavior by maximizing self-utility, while the market maker is not able to differentiate between the actual signal <span class="math inline">\(v\)</span> and noise, given the setting of anonymized trades.
+The model of strategic trading by Kyle illustrates how price impact can arise if market makers anticipate Adverse Selection in an auction setting.</p>
+</div>
+<div id="c-explain-the-strategy-of-the-informed-trader-based-on-the-model." class="section level2 hasAnchor" number="3.14">
+<h2><span class="header-section-number">3.14</span> (c) Explain the strategy of the informed trader based on the model.<a href="cross.html#c-explain-the-strategy-of-the-informed-trader-based-on-the-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The aim of the informed trader is to maximize his expected profit, given the clearing price <span class="math inline">\(p\)</span> that the market maker is going to choose.
+The expected profit is determined as
+<span class="math display">\[
+\begin{aligned}
+\pi &amp; = (v-p)x. \\
+\end{aligned}
+\]</span></p>
+<p>The informed trader conjectures that the market maker will use a price adjustment rule that is linear in aggregate order flow, which accounts to
+<span class="math display">\[
+p = \mu + \lambda y.
+\]</span></p>
+<p>If the market maker uses a linear pricing rule to determine the prices, the informed trader should also use a linear trading rule.
+The informed trader’s profits are determined by</p>
+<p><span class="math display">\[
+\begin{aligned}
+\pi &amp; = (v - p)x \\
+    &amp; = [v - (\lambda y + \mu)]x \\
+    &amp; = [v - (\lambda (u + v) + \mu)]x \\
+\end{aligned}
+\]</span></p>
+<p>with an expected profit of</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(\pi)   &amp; = [v - \lambda x - \mu] x \\
+         &amp; = -\lambda x^2 + [v - \mu]x, \\
+\end{aligned}
+\]</span></p>
+<p>given <span class="math inline">\(E(u) = 0\)</span>, <span class="math inline">\(E(v)=p_0\)</span>, <span class="math inline">\(E(x)=x\)</span>, <span class="math inline">\(E(u^2)= \sigma_u^2\)</span> and <span class="math inline">\(E(uv)=0\)</span>.</p>
+<p>In order to maximize his profits, the informed trader will set the quantity <span class="math inline">\(x\)</span> he trades based on the first order condition</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial E(\pi)}{\partial x} &amp; = -2 \lambda x + (v-p) \stackrel{!}{=} 0 \\
+                                 x &amp; = \frac{v - \mu}{2\lambda} \\
+                                   &amp; = \frac{1}{2\lambda} \cdot v - \frac{\mu}{2\lambda} \\
+                                   &amp; = \beta v + a \\
+                                   &amp; = a + \beta v.
+\end{aligned}
+\]</span></p>
+<p>The following sections will derive the value of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\lambda\)</span>.</p>
+</div>
+<div id="d-explain-the-strategy-of-the-market-makers-price-setting." class="section level2 hasAnchor" number="3.15">
+<h2><span class="header-section-number">3.15</span> (d) Explain the strategy of the market maker’s price setting.<a href="cross.html#d-explain-the-strategy-of-the-market-makers-price-setting." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The market maker assumes the informed trader will use an order flow generation strategy being linear to the signal
+<span class="math display">\[
+x = a + \beta v
+\]</span>
+with <span class="math inline">\(v\)</span> indicating the signal.</p>
+<p>Given the assumption that <span class="math inline">\(u\)</span> is a Gaussian random variable, the market maker can infer that a greater aggregated order flow <span class="math inline">\(y\)</span> increases the change of <span class="math inline">\(x\)</span> being large because the insider knows that <span class="math inline">\(v &gt; p_0\)</span>.
+Accordingly, the market maker will set <span class="math inline">\(p\)</span> higher than otherwise.
+Analogously, if <span class="math inline">\(y\)</span> is low, <span class="math inline">\(x\)</span> will likely be lower as well because the insider knows about <span class="math inline">\(v &lt; p_0\)</span> and therefore submits a sell instead of a buy order.
+In this case, the market maker sets <span class="math inline">\(p\)</span> lower than otherwise.</p>
+<p>The assumptions allow for equality between
+<span class="math display">\[
+a + v \beta \stackrel{!}{=} \frac{v - \mu}{2 \lambda}.
+\]</span></p>
+<p>The market maker will now need to chose the market price based on <span class="math inline">\(p = E(v|y)\)</span>.</p>
+<p>The price is set according to the following projection theorem of two Gaussian random variables
+<span class="math display">\[
+E(y|x) = E(y) + \frac{cov(x,y)\cdot[x-E(x)]}{var(x)}
+\]</span>
+Applying the lemma to the underlying problem yields</p>
+<p><span class="math display">\[
+\begin{aligned}
+p &amp; = E(v|y) \\
+  &amp; = E(v) + \frac{cov(v,y)\cdot[y-E(y)]}{var(y)} \\
+  &amp; = p_0 + \frac{cov(v,u+x)\cdot[y-E(u+x)]}{var(u+x)} \\
+  &amp; = p_0 + \frac{cov(v,u+(a+v\beta))\cdot[y-E(u+(a+v\beta))]}{var(u+(a+v\beta))} \\
+  &amp; = p_0 + \frac{ \beta \Sigma_0 \cdot[y-a - p_0\beta))]}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+  &amp; = \frac{ \beta \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0}y + p_0 \cdot \frac{\sigma_u^2 + \beta^2 \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0} + \frac{ \beta \Sigma_0 \cdot (-a - p_0 \beta)}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+  &amp; = \frac{ \beta \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0}y + \frac{ -a \beta \Sigma_0 + p_0 \sigma_u^2}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+  &amp; = \lambda y + \mu,\\
+\end{aligned}
+\]</span></p>
+<p>with
+<span class="math display">\[
+\begin{aligned}
+cov(v,u+(a+v\beta)) &amp; = E[(v - E(v)) \cdot (u+a+v\beta - E(u+a+v\beta))]\\
+                    &amp; = E[(v - p_0) \cdot (u + v \beta - p_0 \beta)] \\
+                    &amp; = E[vu + v \beta(v - p_0) - p_0u - p_0 \beta(v - p_0)] \\
+                    &amp; = \Sigma_0 \beta - p_0^2 \beta + p_0^2 \beta \\
+                    &amp; = \Sigma_0 \beta.
+\end{aligned}
+\]</span></p>
+<p>Therefore, it follows that
+<span class="math display">\[
+\begin{aligned}
+\lambda &amp; = \frac{ \beta \Sigma_0}{ \sigma_u^2 + \beta^2 \Sigma_0} \\
+\mu     &amp; = \frac{ -a \beta \Sigma_0 + p_0 \sigma_u^2}{ \sigma_u^2 + \beta^2 \Sigma_0}. \\
+\end{aligned}
+\]</span>
+<!-- here: -->
+<!-- http://home.cerge-ei.cz/petrz/fm/f400n30.pdf -->
+Simplifying the preceding results by substitution with <span class="math inline">\(a = - \frac{\mu}{2 \lambda}\)</span> and <span class="math inline">\(\beta = \frac{1}{2\lambda}\)</span> yields</p>
+<p><span class="math display">\[
+\begin{aligned}
+a       &amp; = - p_0 \frac{\sqrt{\sigma_u^2}}{ \sqrt{\Sigma_0}} \\
+\mu     &amp; = p_0 \\
+\lambda &amp; = \frac{\sqrt{\Sigma_0}}{2 \sqrt{\sigma_u^2}} \\
+\beta   &amp; = \frac{\sqrt{\sigma_u^2}}{\sqrt{\Sigma_0}}.
+\end{aligned}
+\]</span></p>
+<p>Thus, we obtain we equilibrium quantity of <span class="math inline">\(x\)</span> and price <span class="math inline">\(p\)</span> as
+<span class="math display">\[
+\begin{aligned}
+x &amp; = a + \beta v = \frac{\sqrt{\sigma_u^2}}{\sqrt{\Sigma_0}} (v-p_0) \\
+p &amp; = \lambda y + \mu = \frac{\sqrt{\Sigma_0}}{2\sqrt{\sigma_u^2}} y + p_0. \\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="e-what-do-the-equilibrium-equations-imply" class="section level2 hasAnchor" number="3.16">
+<h2><span class="header-section-number">3.16</span> (e) What do the equilibrium equations imply?<a href="cross.html#e-what-do-the-equilibrium-equations-imply" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The equilibrium establishes a pricing rule chosen by the market maker and a trading strategy by the insider in a way that maximizes the insider’s expected profit, given the market maker’s pricing rule.
+The price is set by the market maker to earn zero expected profit, given the trading strategy of the informed trader.</p>
+<p>Given the equilibrium order <span class="math inline">\(x\)</span> of the informed trader, the ordered quantity will</p>
+<ul>
+<li>increase (decrease) linear to the difference between liquidation value <span class="math inline">\(v\)</span> and price <span class="math inline">\(p_0\)</span>,</li>
+<li>increase (decrease) if the volatility of the order flow <span class="math inline">\(\sigma_u^2\)</span> is large (small),</li>
+<li>decrease (increase) if the volatility of the order flow <span class="math inline">\(\sigma_u^2\)</span> is large (small).</li>
+</ul>
+<p>Given a clearing price of <span class="math inline">\(p\)</span> the price will</p>
+<ul>
+<li>increase (decrease) linear to the aggregated order flow <span class="math inline">\(y\)</span>,</li>
+<li>increase (decrease) if the volatility of the liquidation value <span class="math inline">\(\Sigma_0\)</span> is large (small),</li>
+<li>decrease (increase) if the volatility of the order flow <span class="math inline">\(\sigma_u^2\)</span> is large (small).</li>
+</ul>
+<p>Some substitution allows to rewrite the equilibrium price as
+<span class="math display">\[
+\begin{aligned}
+p &amp; = p_0 + \frac{1}{2} \frac{\sqrt{\Sigma_0}}{\sqrt{\sigma_u^2}} (x + u) \\
+  &amp; = \frac{1}{2} (\frac{\sqrt{\Sigma_0}}{\sqrt{\sigma_u^2}} u + p_0 + v),
+\end{aligned}
+\]</span></p>
+<p>indicating that only half of the informed trader’s information <span class="math inline">\(\frac{1}{2} v\)</span> is reflected within the equilibrium price.
+The equilibrium price is therefore fully revealing.
+A fully revealing price would be <span class="math inline">\(p=v\)</span>.</p>
+</div>
+<div id="f-how-can-lambda-be-interpreted-as-a-measure-of-liquidity" class="section level2 hasAnchor" number="3.17">
+<h2><span class="header-section-number">3.17</span> (f) How can lambda be interpreted as a measure of liquidity?<a href="cross.html#f-how-can-lambda-be-interpreted-as-a-measure-of-liquidity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The parameter <span class="math inline">\(\lambda\)</span> can be expressed in a range of forms.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda &amp; = \frac{1}{2} \frac{v-p_0}{x} \\
+\lambda &amp; = \frac{p - p_0}{y} \\
+\lambda &amp; = \frac{\sqrt{\Sigma_0}}{2 \sqrt{\sigma_u^2}} \\
+\end{aligned}
+\]</span></p>
+<p>The technical notation illustrates a ratio between some form of return,e.g. <span class="math inline">\(p - p_0\)</span>, divided by some form of trade volume <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span>, the order flow.
+For liquid stocks the lambda will be small since for a given level of trading volume changes in price are comparatively small.</p>
+<p>Alternatively, the higher the proportion of the noise traders <span class="math inline">\(\sigma_u^2\)</span>, relative to the insider information <span class="math inline">\(\Sigma_0\)</span>, the more liquid the market.
+Lambda can also be interpreted as the amount the market maker raises the price when the aggregated order flow increases by one unit.</p>
+</div>
+<div id="g-calculate-the-price-volatility-of-the-model." class="section level2 hasAnchor" number="3.18">
+<h2><span class="header-section-number">3.18</span> (g) Calculate the price volatility of the model.<a href="cross.html#g-calculate-the-price-volatility-of-the-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/f4ad548fb74f4bc3a2cb41654f1fc059/thumb_1200_1697.png -->
+<p><span class="math display">\[
+\begin{aligned}
+Var(p) &amp; = Var(\mu + \lambda y) \\
+       &amp; = Var(\mu) + \lambda^2 Var(y) \\
+       &amp; = \lambda^2 [Var(x) + Var(u)]\\
+       &amp; = \lambda^2 [Var(x) + \sigma_u^2]\\
+       &amp; = \lambda^2 [Var(a + v \beta) + \sigma_u^2] \\
+       &amp; = \lambda^2 [\beta^2 \sigma_v^2 + \sigma_u^2]
+\end{aligned}
+\]</span></p>
+<!-- https://crm.sns.it/media/course/3662/lillo.pdf -->
+<!-- https://www.coursehero.com/tutors-problems/Finance/21046775-Please-help-with-part-b-Rest-of-the-parts-I-have-completed/ -->
+<!-- https://web3.econ.ku.dk/polit/studerende/eksamen/opgrv/filer/rv%20FM%20juni%2016.pdf -->
+<!-- http://assets.press.princeton.edu/links/ch9_vives_slides.pdf -->
+<!-- file:///C:/Users/lisak/Downloads/SSRN-id2652932.pdf -->
+<!-- http://home.cerge-ei.cz/petrz/fm/f400n30.pdf -->
+<!-- https://www.math.cmu.edu/CCF/CCFevents/summer17/abstracts/Notes_June_2017.pdf -->
+<!-- https://www.math.cmu.edu/ccf/CCFevents/summer17/abstracts/Back_Slides.pdf -->
+<!-- https://web3.econ.ku.dk/polit/studerende/eksamen/opgrv/filer/rv%20FM%20juni%2016.pdf -->
+<!-- http://assets.press.princeton.edu/links/ch9_vives_slides.pdf -->
+<!-- https://crm.sns.it/media/course/3662/lillo.pdf -->
+<!-- https://www.cambridge.org/sa/files/2413/6690/0777/8763_dejongrindislidesChapter2345.pdf -->
+<!-- https://www-cambridge-org.emedien.ub.uni-muenchen.de/core/services/aop-cambridge-core/content/view/CA796DF3225BCD72B32E8A7EE976B164/9781316659335c15_p290-297_CBO.pdf/kyle_model.pdf -->
+<!-- https://www-cambridge-org.emedien.ub.uni-muenchen.de/core/books/trades-quotes-and-prices/029A71078EE4C41C0D5D4574211AB1B5 -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="first-steps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-cross-refs.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
