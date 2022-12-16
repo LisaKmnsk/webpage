@@ -1,0 +1,89 @@
+# Structured Query Language
+
+## Introduction to SQL
+
+Structured Query Language (SQL) is commonly used to access and query large databases.
+
+```{r include=FALSE}
+library(reticulate)
+repl_python()
+```
+
+## Querying data
+
+Using the python package \textt{sqlalchemy} we can establish a connection to the database.
+We need to provide the username, password, host and port to identify the database we want to connect to
+in the form "mysql://default_user:q7$?h!4Mx@10.153.30.58:3306".
+
+```{python}
+import sqlalchemy as sa
+
+engine = sa.create_engine('mysql://default_user:q7$?h!4Mx@10.153.30.58:3306')
+connection = engine.connect()
+```
+
+The basic syntax of SQL is structured as follows
+```{sql eval=FALSE}
+SELECT {item} FROM {database}.{datatable} {alias}
+WHERE {condition}
+{more}
+```
+
+The wildcard * selects all columns of a table *aapl_wrds_cqm* and database *taqmsec*.
+```{sql eval=FALSE}
+SELECT * FROM taqmsec.aapl_wrds_cqm
+```
+
+
+## Filtering Data
+
+We can further refine the query by allowing to filter for a set of conditions.
+
+```{sql eval=FALSE}
+SELECT *
+FROM taqmsec.aapl_wrds_ctm
+WHERE time(time) >= "09:30" 
+AND time(time) <= "16:00"
+AND ex = "P" OR ex = "O"
+```
+
+## Combining multiple tables
+
+To combine two tables we can either use *UNION* or *JOIN*
+
+```{sql eval=FALSE}
+SELECT *,
+(main.bid + main.ask)/2 as mid,
+(main.ask - main.bid) as spread
+FROM 
+((SELECT 
+a.time, 
+a.qu_seqnum as seq, 
+"q" as item,
+NULL as price,
+NULL as quantity,
+NULL as sale_condition,
+a.bid as bid, 
+a.bidsiz as bidsize, 
+a.ask as ask, 
+a.asksiz as asksize
+FROM cqm_opening_times a
+WHERE ex = "P")
+UNION ALL
+(SELECT
+b.time, 
+b.tr_seqnum as seq, 
+"t" as item,
+b.price as price,
+b.size as quantity,
+b.tr_scond as sale_condition,
+NULL as bid, 
+NULL as bidsize, 
+NULL as ask, 
+NULL as asksize
+FROM ctm_opening_times b
+WHERE ex = "P")) as main
+ORDER BY time;
+```
+
+

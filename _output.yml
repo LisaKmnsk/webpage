@@ -1,17 +1,21 @@
 bookdown::gitbook:
+  highlight: tango
   css: style.css
+  includes:
   config:
     toc:
+      collapse: section
       before: |
-        <li><a href="./">A Minimal Book Example</a></li>
+       <img class="logo-img" style="height:200px" src="_bookdown_files\_main_files\figure-html\LMU_logo_darker_full.png" alt="Test Image">
+       <div style="position: relative; top: -20px;">
+       <span class="intro">Ludwig-Maximilians-Universität München<br></span>
+       <span class="intro">LMU School of Management<br></span>
+       <span class="intro">Institute for Financial Innovation & Technology<br></span>
+       </div>
+       <li><a href="./">Data Science in Finance</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/rstudio/bookdown" target="blank" class="bookdown-ref">Published with bookdown</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
-    download: ["pdf", "epub"]
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
+    download: ["pdf", "rmd"]
+
+

@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Data Science in Finance</title>
+  <title>Chapter 4 Structured Query Language | Data Science in Finance</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Data Science in Finance" />
+  <meta property="og:title" content="Chapter 4 Structured Query Language | Data Science in Finance" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data Science in Finance" />
+  <meta name="twitter:title" content="Chapter 4 Structured Query Language | Data Science in Finance" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="lecture-material.html"/>
 
-<link rel="next" href="hello.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,25 +198,82 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Data Science in Finance</h1>
-<p class="author"><em>Ryan Riordan &amp; Teaching Assistants</em></p>
-<p class="date"><em>2022-12-16</em></p>
+<div id="structured-query-language" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Structured Query Language<a href="structured-query-language.html#structured-query-language" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-to-sql" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction to SQL<a href="structured-query-language.html#introduction-to-sql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Structured Query Language (SQL) is commonly used to access and query large databases.</p>
 </div>
-<div id="welcome" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Welcome!<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Here you will find the course pages of the project course <em>Data Science in Finance</em>.</p>
-<p>The course is offered regularly in the summer term and aims at providing in-depth knowledge about the programming language Python and its most important libraries for data analysis. Students will learn to develop structured approaches for solving practical problems in a financial context using statistical methods. The final grade will be determined based on a case study of a financial dataset.</p>
-<p>This <a href="https://rstudio4edu.github.io/rstudio4edu-book/book-dress.html" class="uri">https://rstudio4edu.github.io/rstudio4edu-book/book-dress.html</a> is great.</p>
+<div id="querying-data" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Querying data<a href="structured-query-language.html#querying-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the python package we can establish a connection to the database.
+We need to provide the username, password, host and port to identify the database we want to connect to
+in the form “mysql://default_user:<a href="mailto:q7$?h!4Mx@10.153.30.58" class="email">q7$?h!4Mx@10.153.30.58</a>:3306”.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="structured-query-language.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlalchemy <span class="im">as</span> sa</span>
+<span id="cb1-2"><a href="structured-query-language.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="structured-query-language.html#cb1-3" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> sa.create_engine(<span class="st">&#39;mysql://default_user:q7$?h!4Mx@10.153.30.58:3306&#39;</span>)</span>
+<span id="cb1-4"><a href="structured-query-language.html#cb1-4" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> engine.<span class="ex">connect</span>()</span></code></pre></div>
+<p>The basic syntax of SQL is structured as follows</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="structured-query-language.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> {item} <span class="kw">FROM</span> {<span class="kw">database</span>}.{datatable} {alias}</span>
+<span id="cb2-2"><a href="structured-query-language.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> {condition}</span>
+<span id="cb2-3"><a href="structured-query-language.html#cb2-3" aria-hidden="true" tabindex="-1"></a>{more}</span></code></pre></div>
+<p>The wildcard * selects all columns of a table <em>aapl_wrds_cqm</em> and database <em>taqmsec</em>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="structured-query-language.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> taqmsec.aapl_wrds_cqm</span></code></pre></div>
+</div>
+<div id="filtering-data" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Filtering Data<a href="structured-query-language.html#filtering-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can further refine the query by allowing to filter for a set of conditions.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="structured-query-language.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb4-2"><a href="structured-query-language.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> taqmsec.aapl_wrds_ctm</span>
+<span id="cb4-3"><a href="structured-query-language.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">time</span>(<span class="dt">time</span>) <span class="op">&gt;=</span> <span class="ot">&quot;09:30&quot;</span> </span>
+<span id="cb4-4"><a href="structured-query-language.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">AND</span> <span class="dt">time</span>(<span class="dt">time</span>) <span class="op">&lt;=</span> <span class="ot">&quot;16:00&quot;</span></span>
+<span id="cb4-5"><a href="structured-query-language.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">AND</span> ex <span class="op">=</span> <span class="ot">&quot;P&quot;</span> <span class="kw">OR</span> ex <span class="op">=</span> <span class="ot">&quot;O&quot;</span></span></code></pre></div>
+</div>
+<div id="combining-multiple-tables" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Combining multiple tables<a href="structured-query-language.html#combining-multiple-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To combine two tables we can either use <em>UNION</em> or <em>JOIN</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="structured-query-language.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span>,</span>
+<span id="cb5-2"><a href="structured-query-language.html#cb5-2" aria-hidden="true" tabindex="-1"></a>(main.bid <span class="op">+</span> main.ask)<span class="op">/</span><span class="dv">2</span> <span class="kw">as</span> mid,</span>
+<span id="cb5-3"><a href="structured-query-language.html#cb5-3" aria-hidden="true" tabindex="-1"></a>(main.ask <span class="op">-</span> main.bid) <span class="kw">as</span> spread</span>
+<span id="cb5-4"><a href="structured-query-language.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb5-5"><a href="structured-query-language.html#cb5-5" aria-hidden="true" tabindex="-1"></a>((<span class="kw">SELECT</span> </span>
+<span id="cb5-6"><a href="structured-query-language.html#cb5-6" aria-hidden="true" tabindex="-1"></a>a.<span class="dt">time</span>, </span>
+<span id="cb5-7"><a href="structured-query-language.html#cb5-7" aria-hidden="true" tabindex="-1"></a>a.qu_seqnum <span class="kw">as</span> seq, </span>
+<span id="cb5-8"><a href="structured-query-language.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ot">&quot;q&quot;</span> <span class="kw">as</span> item,</span>
+<span id="cb5-9"><a href="structured-query-language.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> price,</span>
+<span id="cb5-10"><a href="structured-query-language.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> quantity,</span>
+<span id="cb5-11"><a href="structured-query-language.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> sale_condition,</span>
+<span id="cb5-12"><a href="structured-query-language.html#cb5-12" aria-hidden="true" tabindex="-1"></a>a.bid <span class="kw">as</span> bid, </span>
+<span id="cb5-13"><a href="structured-query-language.html#cb5-13" aria-hidden="true" tabindex="-1"></a>a.bidsiz <span class="kw">as</span> bidsize, </span>
+<span id="cb5-14"><a href="structured-query-language.html#cb5-14" aria-hidden="true" tabindex="-1"></a>a.ask <span class="kw">as</span> ask, </span>
+<span id="cb5-15"><a href="structured-query-language.html#cb5-15" aria-hidden="true" tabindex="-1"></a>a.asksiz <span class="kw">as</span> asksize</span>
+<span id="cb5-16"><a href="structured-query-language.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> cqm_opening_times a</span>
+<span id="cb5-17"><a href="structured-query-language.html#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> ex <span class="op">=</span> <span class="ot">&quot;P&quot;</span>)</span>
+<span id="cb5-18"><a href="structured-query-language.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb5-19"><a href="structured-query-language.html#cb5-19" aria-hidden="true" tabindex="-1"></a>(<span class="kw">SELECT</span></span>
+<span id="cb5-20"><a href="structured-query-language.html#cb5-20" aria-hidden="true" tabindex="-1"></a>b.<span class="dt">time</span>, </span>
+<span id="cb5-21"><a href="structured-query-language.html#cb5-21" aria-hidden="true" tabindex="-1"></a>b.tr_seqnum <span class="kw">as</span> seq, </span>
+<span id="cb5-22"><a href="structured-query-language.html#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="ot">&quot;t&quot;</span> <span class="kw">as</span> item,</span>
+<span id="cb5-23"><a href="structured-query-language.html#cb5-23" aria-hidden="true" tabindex="-1"></a>b.price <span class="kw">as</span> price,</span>
+<span id="cb5-24"><a href="structured-query-language.html#cb5-24" aria-hidden="true" tabindex="-1"></a>b.<span class="kw">size</span> <span class="kw">as</span> quantity,</span>
+<span id="cb5-25"><a href="structured-query-language.html#cb5-25" aria-hidden="true" tabindex="-1"></a>b.tr_scond <span class="kw">as</span> sale_condition,</span>
+<span id="cb5-26"><a href="structured-query-language.html#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> bid, </span>
+<span id="cb5-27"><a href="structured-query-language.html#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> bidsize, </span>
+<span id="cb5-28"><a href="structured-query-language.html#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> ask, </span>
+<span id="cb5-29"><a href="structured-query-language.html#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="kw">NULL</span> <span class="kw">as</span> asksize</span>
+<span id="cb5-30"><a href="structured-query-language.html#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> ctm_opening_times b</span>
+<span id="cb5-31"><a href="structured-query-language.html#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> ex <span class="op">=</span> <span class="ot">&quot;P&quot;</span>)) <span class="kw">as</span> main</span>
+<span id="cb5-32"><a href="structured-query-language.html#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> <span class="dt">time</span>;</span></code></pre></div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="lecture-material.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="hello.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -247,7 +304,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03_sql.rmd",
 "text": "Edit"
 },
 "history": {
@@ -258,7 +315,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "https://github.com/USERNAME/REPO/raw/BRANCH/index.Rmd"],
+"download": ["_main.pdf", "https://github.com/USERNAME/REPO/raw/BRANCH/03_sql.rmd"],
 "search": {
 "engine": "fuse",
 "options": null

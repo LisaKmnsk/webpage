@@ -1,3 +1,144 @@
+:root {
+  --font-colour: #333333;
+
+  /* Those are LMU colors */
+  --accent-blue: #0F1987;
+  --accent-cyan: #009fe3;
+  --accent-violet: #8c4091;
+  --accent-red:rgb(215, 25, 25);
+  --accent-red-dark:#a30d0d;
+  --accent-yellow:#e6e316;
+  --accent-yellow-dark:#b3b01b;
+  --accent-green: #00873b; 
+  --accent-green-dark: #00662b;
+
+  /* Background Styles */
+  --accent-darkgray: #626468;
+  --accent-mediumgray: #c0c1c3;
+  --accent-lightgray: #e6e6e7;
+  --accent-lightergray: rgb(245, 245, 245);
+
+  /* Styles for Background Padding */
+  --accent-padding: rgb(201 201 201 / 30%);
+  --accent-padding-hover: rgb(201 201 201 / 50%);
+  --accent-padding-dark: rgb(133 133 133 / 30%);
+  --accent-padding-dark-hover: rgb(133 133 133 / 50%);
+
+  --bg-colour: var(--accent-lightergray);
+  --current-accent: var(--accent-blue);
+
+  /* Current accent */
+  /* MAKE THIS DYNAMIC! */
+  /* Accent green */
+  /* --current-accent-light: rgb(191, 225, 206); */
+  /* --current-accent-dark: rgb(0, 102, 43); */
+
+  /* Accent yellow */
+  /* --current-accent-light: rgb(230, 227, 150); */
+  /* --current-accent-dark: rgb(134, 132, 17); */
+
+  /* Accent blue */
+  --current-accent-light: rgb(128, 153, 204);
+  --current-accent-dark: rgb(0, 32, 96);
+
+  --logo-transparent: url(_bookdown_files//_main_files//figure-html//LMU_logo_transparent.png);
+  --logo-white-full: url(_bookdown_files//_main_files//figure-html//LMU_logo_white_full.png);
+  --logo-white: url(_bookdown_files//_main_files//figure-html//LMU_logo_white.png);
+  --logo-header: url(_bookdown_files//_main_files//figure-html//Logo_full.png);
+  --logo-fintech: url(_bookdown_files//_main_files//figure-html//FinTech_logo.png);
+
+  --cursor-christmas: url(_bookdown_files//_main_files//figure-html//socken.png);
+  
+}
+
+.logo {
+  content: "";
+  z-index: 0;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  width: 400px;
+  height: 200px;
+  background-image: var(--logo-header);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+img.logo-img {
+  margin: 15%;
+  position: center;
+}
+
+.intro {
+  padding: 20px;
+  font-size: smaller;
+}
+
+.page-wrapper {
+  background-color: var(--accent-lightergray);
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  cursor: default;
+}
+
+.book-summary {
+  background-color: white;
+}
+
+.book .book-summary ul.summary li a:hover, .book .book-summary ul.summary li.active>a {
+  color: var(--current-accent);
+  background: var(--accent-lightgray);
+  text-decoration: none;
+}
+
+/* .MJXc-display {
+  display: block;
+  background-color: var(--accent-padding);
+  text-align: center;
+  margin: 1em 0;
+  padding: 20px !important;
+} */
+
+.page-inner, .normal {
+background-color: transparent !important;
+}
+
+.MJXc-display {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+  padding: 0;
+  background-color: var(--accent-lightgray);
+  padding: 20px !important;
+}
+
+
+img.logo-img {
+  margin: 15%;
+  position: center;
+}
+
+.sourceCode {
+  background-color: transparent !important;
+}
+
+.book .book-summary {
+  background-color: white;
+}
+
+.sourceCode > .sourceCode {
+  background-color: var(--accent-lightgray) !important;
+}
+
+li.chapter > a {
+  font-weight: 200 !important;
+}
+
 p.caption {
   color: #777;
   margin-top: 10px;
@@ -12,3 +153,208 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+h1 {
+  color:var(--current-accent);
+}
+
+h2 {
+  color:green;
+}
+
+
+/* Styling of Header */
+.logo {
+  content: "";
+  z-index: 0;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  width: 400px;
+  height: 200px;
+  background-image: var(--logo-header);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.logo-fintech {
+  background-image: var(--logo-fintech);
+  /* background-color: red; */
+  background-position: bottom 30px;
+  /* background-position: top 0px right 0px; */
+  z-index: 0;
+  position: absolute;
+  background-size: contain;
+  top: 95px;
+  right: -85px;
+  width: 350px;
+  height: 50px;
+  background-repeat: no-repeat;
+  transform: rotate(-12deg);
+}
+
+
+.slide-url {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+}
+
+.slide-url a {
+  font-style: italic;
+}
+
+.slide-url a:hover {
+  font-weight: 400;
+}
+
+#picture {
+  border-style: solid;
+  border-width: 2pt;
+  border-color: var(--bg-colour);
+  border-radius: 50%;
+  padding: 5pt;
+}
+
+a, a > code {
+  color: var(--font-colour);
+  text-decoration: none;
+}
+
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Highlight classes */
+[class^='highlight'], a {
+  font-weight: 600;
+}
+
+.highlight, th, .highlight-centered {
+  color: var(--accent-darkgray);
+}
+
+.highlight:hover, th:hover {
+  color: black;
+}
+
+.highlight-red{
+  color: var(--accent-red);
+}
+
+.highlight-darkred{
+  color: var(--accent-red-dark);
+}
+
+.highlight-red:hover{
+  color: var(--accent-red-dark);
+}
+
+.highlight-blue, a {
+  color: var(--accent-cyan);
+}
+
+.highlight-blue:hover, a:hover {
+  color: var(--accent-blue);
+}
+
+.highlight-darkblue {
+  color: var(--accent-blue)
+}
+
+.highlight-green {
+  color: var(--accent-green)
+}
+
+.highlight-green:hover {
+  color: var(--accent-green-dark)
+}
+
+.highlight-yellow {
+  color: var(--accent-yellow)
+}
+
+.highlight-yellow:hover {
+  color: var(--accent-yellow-dark)
+}
+
+.highlight-mediumgray {
+  color: var(--accent-mediumgray)
+}
+
+.highlight-mediumgray:hover {
+  color: var(--accent-darkgray)
+}
+
+
+.highlight-centered{
+  margin: 20%;
+  display: block;
+  text-align: center;
+}
+
+.hint {
+  color: var(--accent-mediumgray)
+}
+
+.transparent {
+  color: #ffffff00;
+}
+
+/* a:hover {
+  color: var(--font-colour) !important;
+  text-decoration: none;
+  font-weight: 400;
+} */
+
+
+.footnote {
+  position: absolute;
+  bottom: 10px;
+  font-size: 80%;
+  color: var(--accent-mediumgray);
+}
+
+.slidenumber.footnote {
+  position: absolute;
+  right: 43px;
+}
+
+h1, h2, h3, h4, .toc .h2, .toc .h3{
+  padding-top: 00px;
+  padding-bottom: 00px;
+  color: var(--current-accent);
+  text-shadow: none;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 00px;
+  margin-bottom: -10px;
+}
+
+
+/* Custom Scrollbar Design */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+  background-color: var(--accent-lightgray);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-mediumgray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-darkgray);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--accent-lightgray);
+}
+
+a.bookdown-ref {
+  font-weight: 100;
+  font-size: smaller;
+  color: var(--accent-mediumgray);
+}
+
